@@ -49,7 +49,7 @@ public class Planner {
         System.out.println( star.repeat(69) );
         System.out.println("|  Total   |           |          |           | Inflated | Inflated |");
         System.out.println("| Invested |  Balance  | Dividend | Inflation | Balance  | Dividend |");
-        System.out.println("-------------------------------------------------------------------");
+        System.out.println("---------------------------------------------------------------------");
         System.out.printf("%-11s", " $" + myAcc.getTotalInvested());
         System.out.printf("%-12s", " $" + myAcc.getBalance());
         System.out.printf("%-11s", " $" + myAcc.getDividend());
