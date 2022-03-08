@@ -104,12 +104,6 @@ public class Account {
         balance += yearTotal;            // Compound for this specific year
         
       }
-      
-      //Dividend is 3%, Inflation 2% per year
-        dividend = balance * 0.03;
-        inflation = inflation * years;
-        infDividend = dividend - (dividend * inflation);
-        infBalance = balance - (balance * inflation);
   }
 
   /** @return string representation of totalInvested */
@@ -122,23 +116,33 @@ public class Account {
     return String.format("%.2f", balance);
   }
 
-  /** @return string representation of dividend */
+  /** @return string representation of dividend 
+   *  
+   *  dividend is 3% to be safe (4% is standard)
+   */
   public String getDividend() {
+    dividend = balance * 0.03;
     return String.format("%.2f", dividend);
   }
   
-  /** @return string representation of inflation */
+  /** @return string representation of inflation 
+   *
+   *  inflation is 2% average per year
+   */
   public String getInflation() {
+    inflation = inflation * years;
     return String.format("%.2f", inflation * 100);
   }
   
   /** @return string representation of infBalance */
   public String getInfBalance() {
+    infBalance = balance - (balance * inflation);
     return String.format("%.2f", infBalance);
   }
   
   /** @return string representation of infDividend */
   public String getInfDividend() {
+    infDividend = dividend - (dividend * inflation);
     return String.format("%.2f", infDividend);
   }
 }
