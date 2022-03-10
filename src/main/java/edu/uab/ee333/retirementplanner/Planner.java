@@ -14,6 +14,7 @@ package edu.uab.ee333.retirementplanner;
 // Imports
 import java.util.Scanner;
 
+/** @author zharper42 */
 public class Planner {
 
     /**

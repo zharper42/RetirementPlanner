@@ -11,6 +11,7 @@
  */
 package edu.uab.ee333.retirementplanner;
 
+/** @author zharper42 */
 public class Account {
 
   // Variables
@@ -90,20 +91,24 @@ public class Account {
     
       for(int y = 1; !(y > years); y++){
           
-          yearTotal = 0; // resets every year
+          // resets every year (mini-balance for specific year)
+          yearTotal = 0;
           
         for(int m = 1; m < 13; m++){
-            
+          
+          // basically magic
           yearTotal += monthly;
           monthYield = yearTotal * mrate;
           yearTotal += monthYield;
         }
         
-        totalInvested += (monthly *12);
+        totalInvested += (monthly *12);  // amount directly invested
         balance += (balance * yrate);    // Compound for entire balance
         balance += yearTotal;            // Compound for this specific year
         
       }
+      inflation = inflation * years;
+      dividend = balance * 0.03;
   }
 
   /** @return string representation of totalInvested */
@@ -121,7 +126,6 @@ public class Account {
    *  dividend is 3% to be safe (4% is standard)
    */
   public String getDividend() {
-    dividend = balance * 0.03;
     return String.format("%.2f", dividend);
   }
   
@@ -130,7 +134,6 @@ public class Account {
    *  inflation is 2% average per year
    */
   public String getInflation() {
-    inflation = inflation * years;
     return String.format("%.2f", inflation * 100);
   }
   

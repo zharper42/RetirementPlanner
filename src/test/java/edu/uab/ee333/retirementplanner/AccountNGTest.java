@@ -1,6 +1,13 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/EmptyTestNGTest.java to edit this template
+ * Group2:       
+ *      Willaim Benefield <wbb31@uab.edu>
+ *      Clayton Dalton <cgdalton@uab.edu>
+ *      Luis Figueroa <alefigue@uab.edu>
+ *      Zachary Harper <zharper@uab.edu>
+ *      Daniel Pineda <mdpineda@uab.edu>
+ *      Joe Wong <jawong1@uab.edu>
+ *
+ * Assignment:  Retirement Planner - EE333 Spring 2022
  */
 
 package edu.uab.ee333.retirementplanner;
