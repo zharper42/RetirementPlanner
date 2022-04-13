@@ -9,7 +9,7 @@
  *
  * Assignment:  Retirement Planner - EE333 Spring 2022
  */
-package edu.uab.ee333.retirementplanner;
+package edu.uab.zharper.retirementplanner;
 
 /** @author zharper42 */
 public class Account {
