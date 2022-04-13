@@ -12,11 +12,6 @@ This amount will be what is collected for retirement. The full value
 of the investment as well as the monthly dividend will also be provided 
 in inflated numbers, today’s dollars, at a rate of 2% per year on average.
 
-This project is object oriented and contains two classes - Account and Planner.
-The Account class creates and holds Account objects which contain the variables
-listed below. The Planner class contains the main() method and will produce
-an easy to read chart in the console.
-
 Calculations are done on a monthly basis. At the begining of each
 year the apr for the current balance is taken. The current year is
 then calculated separately as new money is being added every
