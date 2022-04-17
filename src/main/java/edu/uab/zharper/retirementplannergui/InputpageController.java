@@ -18,6 +18,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
+import javafx.scene.media.AudioClip;
 
 /**
  * FXML Controller class
@@ -30,12 +31,12 @@ public class InputpageController implements Initializable {
   @FXML private TextField monthlyTextField;
   @FXML private TextField aprTextField;
   @FXML private TextField yearsTextField;
-  
+
   @FXML private Label initialInvalid;
   @FXML private Label monthlyInvalid;
   @FXML private Label aprInvalid;
   @FXML private Label yearsInvalid;
-  
+
   @FXML private TextField balanceTextField;
   @FXML private TextField totalTextField;
   @FXML private TextField dividendTextField;
@@ -52,61 +53,57 @@ public class InputpageController implements Initializable {
   @FXML
   private void switchToAbout() throws IOException {
     App.setRoot("aboutForm");
+    AudioClip note = new AudioClip(this.getClass().getResource("/click_sound.mp3").toString());
+    note.play();
   }
-  
+
   @FXML
-  public boolean checkValue(){
-   
-      double doubleValue;
-      int intValue;
-      
-      try {
-        doubleValue = Double.parseDouble((initialTextField.getText()));
-      } catch (NumberFormatException a) {
-        initialInvalid.setText("Invalid Field");
-      }
-        
-      try {
-        doubleValue = Double.parseDouble((monthlyTextField.getText()));
-      } catch (NumberFormatException b) {
-        monthlyInvalid.setText("Invalid Field");
-      }
-        
-      try {
-        doubleValue = Double.parseDouble((aprTextField.getText()));
-      } catch (NumberFormatException c) {
-        aprInvalid.setText("Invalid Field");
-      }
-        
-      try {
-        intValue = Integer.parseInt((yearsTextField.getText()));
-      } catch (NumberFormatException d) {
-        yearsInvalid.setText("Invalid Field");
-      }
-      
-      if ((initialInvalid.getText()).equals("Invalid Field"))
-          return false;
-      if ((monthlyInvalid.getText()).equals("Invalid Field"))
-          return false;
-      if ((aprInvalid.getText()).equals("Invalid Field"))
-          return false;
-      if ((yearsInvalid.getText()).equals("Invalid Field"))
-          return false;
-      
-      return true;
+  public boolean checkValue() {
+
+    double doubleValue;
+    int intValue;
+
+    try {
+      doubleValue = Double.parseDouble((initialTextField.getText()));
+    } catch (NumberFormatException a) {
+      initialInvalid.setText("Invalid Field");
+    }
+
+    try {
+      doubleValue = Double.parseDouble((monthlyTextField.getText()));
+    } catch (NumberFormatException b) {
+      monthlyInvalid.setText("Invalid Field");
+    }
+
+    try {
+      doubleValue = Double.parseDouble((aprTextField.getText()));
+    } catch (NumberFormatException c) {
+      aprInvalid.setText("Invalid Field");
+    }
+
+    try {
+      intValue = Integer.parseInt((yearsTextField.getText()));
+    } catch (NumberFormatException d) {
+      yearsInvalid.setText("Invalid Field");
+    }
+
+    if ((initialInvalid.getText()).equals("Invalid Field")) return false;
+    if ((monthlyInvalid.getText()).equals("Invalid Field")) return false;
+    if ((aprInvalid.getText()).equals("Invalid Field")) return false;
+    if ((yearsInvalid.getText()).equals("Invalid Field")) return false;
+
+    return true;
   }
-    
 
   @FXML
   public void CalculateClick() {
-      
-      initialInvalid.setText("");
-      monthlyInvalid.setText("");
-      aprInvalid.setText("");
-      yearsInvalid.setText("");
-      
-    if (checkValue() == false)
-        return;
+
+    initialInvalid.setText("");
+    monthlyInvalid.setText("");
+    aprInvalid.setText("");
+    yearsInvalid.setText("");
+
+    if (checkValue() == false) return;
 
     // Variables
     double balance = Double.valueOf(initialTextField.getText());
@@ -137,11 +134,11 @@ public class InputpageController implements Initializable {
     infBalance = balance - (balance * inflation);
 
     // OUTPUT HERE
-    //balanceTextField.setText("" + balance);
-    //totalTextField.setText("" + totalInvested);
-    //dividendTextField.setText("" + dividend);
-    //infBalanceTextField.setText("" + infBalance);
-    //infDividendTextField.setText("" + infDividend);
+    // balanceTextField.setText("" + balance);
+    // totalTextField.setText("" + totalInvested);
+    // dividendTextField.setText("" + dividend);
+    // infBalanceTextField.setText("" + infBalance);
+    // infDividendTextField.setText("" + infDividend);
 
   }
 
