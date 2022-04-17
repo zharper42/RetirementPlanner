@@ -16,6 +16,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.media.AudioClip;
 
 /**
  * FXML Controller class
@@ -39,5 +40,9 @@ public class AboutFormController implements Initializable {
         App.setRoot("inputpage");
     else
         App.setRoot("outputpage");
+    
+    //Play audio
+    AudioClip note = new AudioClip(this.getClass().getResource("/click_sound.mp3").toString());
+    note.play();
   }
 }

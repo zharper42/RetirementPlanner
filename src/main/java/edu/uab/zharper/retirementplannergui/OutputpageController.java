@@ -17,6 +17,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.media.AudioClip;
 
 /**
  * Output Page Controller class
@@ -48,6 +49,10 @@ public class OutputpageController implements Initializable {
   @FXML
   public void goBackClick() throws IOException {
     App.setRoot("inputpage");
+    
+    //Play audio
+    AudioClip note = new AudioClip(this.getClass().getResource("/click_sound.mp3").toString());
+    note.play();
   }
 
   /** About Page button */
@@ -57,5 +62,9 @@ public class OutputpageController implements Initializable {
     //Let StaticTemp know which page you came from
     StaticTemp.setWhichPage(false);
     App.setRoot("aboutForm");
+    
+    //Play audio
+    AudioClip note = new AudioClip(this.getClass().getResource("/click_sound.mp3").toString());
+    note.play();
   }
 }

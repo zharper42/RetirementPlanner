@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
+import javafx.scene.media.AudioClip;
 
 /**
  * Input Page Controller class
@@ -55,6 +56,10 @@ public class InputpageController implements Initializable {
     //Let StaticTemp know which page you came from
     StaticTemp.setWhichPage(true);
     App.setRoot("aboutForm");
+    
+    //Play audio
+    AudioClip note = new AudioClip(this.getClass().getResource("/click_sound.mp3").toString());
+    note.play();
   }
   
   /** Check if any fields are invalid */
@@ -105,6 +110,10 @@ public class InputpageController implements Initializable {
   /** Button to calculate */
   @FXML
   public void CalculateClick() throws IOException {
+      
+    //Play audio
+    AudioClip note = new AudioClip(this.getClass().getResource("/click_sound.mp3").toString());
+    note.play();
       
     //Resets warning labels and checks if fields are valid
     initialInvalid.setText("");
