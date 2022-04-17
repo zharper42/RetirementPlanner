@@ -13,6 +13,7 @@ package edu.uab.zharper.retirementplannergui;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,28 +21,26 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 
 /**
- * FXML Controller class
+ * Input Page Controller class
  *
  * @author Zachary Harper
  */
 public class InputpageController implements Initializable {
+    
+  private final DecimalFormat numberFormat = new DecimalFormat("#.00");
 
+  //Input text fields
   @FXML private TextField initialTextField;
   @FXML private TextField monthlyTextField;
   @FXML private TextField aprTextField;
   @FXML private TextField yearsTextField;
   
+  //Text field warning labels
   @FXML private Label initialInvalid;
   @FXML private Label monthlyInvalid;
   @FXML private Label aprInvalid;
   @FXML private Label yearsInvalid;
   
-  @FXML private TextField balanceTextField;
-  @FXML private TextField totalTextField;
-  @FXML private TextField dividendTextField;
-  @FXML private TextField infBalanceTextField;
-  @FXML private TextField infDividendTextField;
-
   /** Initializes the controller class. */
   @Override
   public void initialize(URL url, ResourceBundle rb) {
@@ -49,17 +48,23 @@ public class InputpageController implements Initializable {
 
   }
 
+  /** About Page button */
   @FXML
   private void switchToAbout() throws IOException {
+      
+    //Let StaticTemp know which page you came from
+    StaticTemp.setWhichPage(true);
     App.setRoot("aboutForm");
   }
   
+  /** Check if any fields are invalid */
   @FXML
-  public boolean checkValue(){
+  public boolean checkFields() {
    
       double doubleValue;
       int intValue;
       
+      //Label any invalid fields
       try {
         doubleValue = Double.parseDouble((initialTextField.getText()));
       } catch (NumberFormatException a) {
@@ -84,6 +89,7 @@ public class InputpageController implements Initializable {
         yearsInvalid.setText("Invalid Field");
       }
       
+      //Return false if any fields are labeled invalid
       if ((initialInvalid.getText()).equals("Invalid Field"))
           return false;
       if ((monthlyInvalid.getText()).equals("Invalid Field"))
@@ -96,72 +102,86 @@ public class InputpageController implements Initializable {
       return true;
   }
     
-
+  /** Button to calculate */
   @FXML
-  public void CalculateClick() {
+  public void CalculateClick() throws IOException {
       
-      initialInvalid.setText("");
-      monthlyInvalid.setText("");
-      aprInvalid.setText("");
-      yearsInvalid.setText("");
-      
-    if (checkValue() == false)
+    //Resets warning labels and checks if fields are valid
+    initialInvalid.setText("");
+    monthlyInvalid.setText("");
+    aprInvalid.setText("");
+    yearsInvalid.setText("");
+    if (checkFields() == false)
         return;
 
-    // Variables
+    //Variables
     double balance = Double.valueOf(initialTextField.getText());
     double monthly = Double.valueOf(monthlyTextField.getText());
     double percent = Double.valueOf(aprTextField.getText());
     int years = Integer.valueOf(yearsTextField.getText());
-
-    double totalInvested, dividend, yrate, mrate;
+    double directlyInvested, dividend, yrate, mrate;
     double infBalance, infDividend;
-    double inflation = 0.02;
+    double inflation = 0.025;
 
-    // Yearly/monthly return
+    //Yearly/monthly return
     yrate = percent * 0.01;
     mrate = yrate / 12;
-    totalInvested = balance;
+    directlyInvested = balance;
 
-    // Runs once per year
+    //Runs once per year
     for (int i = 1; !(i > years); i++) {
 
       balance = Compound(yrate, mrate, monthly, balance);
-      totalInvested += (monthly * 12);
+      directlyInvested += (monthly * 12);
     }
 
-    // Dividend is 3%, Inflation 2% per year
+    //Dividend is 3%, Inflation 2.5% per year
     dividend = balance * 0.03;
-    inflation = inflation * years;
-    infDividend = dividend - (dividend * inflation);
-    infBalance = balance - (balance * inflation);
+    inflation = (inflation * years) + 1;
+    infDividend = dividend / inflation;
+    infBalance = balance /inflation;
+    
+    /* Formats and pipes the results to the static class.
+    The OutputpageController can retrieve results from there */
 
-    // OUTPUT HERE
-    //balanceTextField.setText("" + balance);
-    //totalTextField.setText("" + totalInvested);
-    //dividendTextField.setText("" + dividend);
-    //infBalanceTextField.setText("" + infBalance);
-    //infDividendTextField.setText("" + infDividend);
+    //After every run, reset the result values that displays
+    StaticTemp.setBalance("" + balance);
+    StaticTemp.setDirectlyInvested("" + directlyInvested);
+    StaticTemp.setDividend("" + dividend);
+    StaticTemp.setInfBalance("" + infBalance);
+    StaticTemp.setInfDividend("" + infDividend);
+
+    //Formats and pipes the results to staticTemp
+    StaticTemp.setBalance("" + numberFormat.format(balance));
+    StaticTemp.setDirectlyInvested("" + numberFormat.format(directlyInvested));
+    StaticTemp.setDividend("" + numberFormat.format(dividend));
+    StaticTemp.setInfBalance("" + numberFormat.format(infBalance));
+    StaticTemp.setInfDividend("" + numberFormat.format(infDividend));
+
+    //Switches scenes
+    App.setRoot("outputpage");
 
   }
 
+  /** Compounds the balance for every month in a year */
   public static double Compound(double yrate, double mrate, double monthly, double balance) {
 
-    // Variables
+    //Variables
     double monthYield, yearTotal = 0;
 
-    // Run for every month
+    //Run for every month
     for (int i = 1; i < 13; i++) {
 
-      // Basically magic
+      //Basically magic
       yearTotal += monthly;
       monthYield = yearTotal * mrate;
       yearTotal += monthYield;
     }
 
-    balance += (balance * yrate); // Compound for entire balance
-    balance += yearTotal; // Compound for this specific year
+    balance += (balance * yrate); //Compound for entire balance
+    balance += yearTotal; //Compound for this specific year
 
     return balance;
   }
+ 
 }

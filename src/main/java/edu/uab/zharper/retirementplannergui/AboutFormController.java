@@ -30,8 +30,14 @@ public class AboutFormController implements Initializable {
     // TODO
   }
 
+  /** Go Back button */
   @FXML
-  private void switchToPrimary() throws IOException {
-    App.setRoot("inputpage");
+  public void goBackClick() throws IOException {
+      
+    //Go back to the page you came from
+    if (StaticTemp.getWhichPage() == true)
+        App.setRoot("inputpage");
+    else
+        App.setRoot("outputpage");
   }
 }
