@@ -11,16 +11,17 @@
  */
 package edu.uab.zharper.retirementplannergui;
 
-/** A static class that all controllers have access to for pulling information. 
- *
- *  @author: Joe Wong <jawong1@uab.edu>
+/** 
+ * A static class that all controllers have access to for pulling information. 
+ * 
+ *  @author Joe Wong
  */
 public class StaticTemp {
 
   public static boolean whichPage;
     
   private static String balance;
-  private static String totalInvested;
+  private static String directlyInvested;
   private static String dividend;
   private static String infBalance;
   private static String infDividend;
@@ -37,12 +38,12 @@ public class StaticTemp {
 
   /** @return the total */
   public static String getDirectlyInvested() {
-    return totalInvested;
+    return directlyInvested;
   }
 
-  /** @param aTotal the total to set */
-  public static void setDirectlyInvested(String aTotalInvested) {
-    totalInvested = aTotalInvested;
+  /** @param aDirectlyInvested the total to set */
+  public static void setDirectlyInvested(String aDirectlyInvested) {
+    directlyInvested = aDirectlyInvested;
   }
 
   /** @return the dividend */

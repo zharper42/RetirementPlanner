@@ -49,7 +49,11 @@ public class InputpageController implements Initializable {
 
   }
 
-  /** About Page button */
+  /** 
+   * About Page button 
+   *
+   * @throws IOException
+   */
   @FXML
   private void switchToAbout() throws IOException {
       
@@ -62,7 +66,11 @@ public class InputpageController implements Initializable {
     note.play();
   }
   
-  /** Check if any fields are invalid */
+  /** 
+   * Check if any fields are invalid 
+   *
+   * @return true or false
+   */
   @FXML
   public boolean checkFields() {
    
@@ -107,7 +115,11 @@ public class InputpageController implements Initializable {
       return true;
   }
     
-  /** Button to calculate */
+  /** 
+   * Button to calculate 
+   *
+   * @throws IOException
+   */
   @FXML
   public void CalculateClick() throws IOException {
       
@@ -172,7 +184,15 @@ public class InputpageController implements Initializable {
 
   }
 
-  /** Compounds the balance for every month in a year */
+  /** 
+   * Compounds the balance for every month in a year 
+   *
+   * @param yrate
+   * @param mrate
+   * @param monthly
+   * @param balance
+   * @return balance
+   */
   public static double Compound(double yrate, double mrate, double monthly, double balance) {
 
     //Variables

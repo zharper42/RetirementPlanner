@@ -1,5 +1,5 @@
 /*
- * Group2:       
+ * Group2:
  *      Willaim Benefield <wbb31@uab.edu>
  *      Clayton Dalton <cgdalton@uab.edu>
  *      Luis Figueroa <alefigue@uab.edu>
@@ -26,6 +26,12 @@ public class App extends Application {
 
     private static Scene scene;
 
+    /**
+     * Initializing app
+     * 
+     * @param stage
+     * @throws IOException
+     */
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("inputpage"), 400, 480);
@@ -33,15 +39,30 @@ public class App extends Application {
         stage.show();
     }
 
+    /**
+     * setRoot
+     * 
+     * @throws IOException
+     */
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
 
+    /**
+     * loadFXML
+     * 
+     * @throws IOException
+     */
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
 
+    /**
+     * main
+     * 
+     * @param args
+     */
     public static void main(String[] args) {
         launch();
     }

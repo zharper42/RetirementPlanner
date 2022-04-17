@@ -22,7 +22,7 @@ import javafx.scene.media.AudioClip;
 /**
  * Output Page Controller class
  *
- * @author Joe Wong <jawong1@uab.edu>
+ * @author Joe Wong
  */
 public class OutputpageController implements Initializable {
 
@@ -45,7 +45,11 @@ public class OutputpageController implements Initializable {
     infDividendTextField.setText("$" + StaticTemp.getInfDividend());
   }
 
-  /** Go Back button */
+  /** 
+   * Go Back button 
+   *
+   * @throws IOException
+   */
   @FXML
   public void goBackClick() throws IOException {
     App.setRoot("inputpage");
@@ -55,7 +59,11 @@ public class OutputpageController implements Initializable {
     note.play();
   }
 
-  /** About Page button */
+  /** 
+   * About Page button 
+   *
+   * @throws IOException
+   */
   @FXML
   private void switchToAboutClick() throws IOException {
       

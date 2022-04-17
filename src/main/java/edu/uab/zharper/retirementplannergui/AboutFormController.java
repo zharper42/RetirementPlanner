@@ -31,7 +31,11 @@ public class AboutFormController implements Initializable {
     // TODO
   }
 
-  /** Go Back button */
+  /** 
+   * Go Back button 
+   *
+   * @throws IOException
+   */
   @FXML
   public void goBackClick() throws IOException {
       
