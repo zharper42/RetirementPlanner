@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uab.edu.grouptwo.retirementgui.AboutFormController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.uab.zharper.retirementplannergui.AboutFormController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#92c8fc" height="279.0" layoutX="78.0" layoutY="72.0" stroke="BLACK" strokeType="INSIDE" width="445.0">
          <effect>
