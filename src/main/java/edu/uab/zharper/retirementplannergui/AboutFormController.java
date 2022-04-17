@@ -1,5 +1,5 @@
 /*
- * Group2:       
+ * Group2:
  *      Willaim Benefield <wbb31@uab.edu>
  *      Clayton Dalton <cgdalton@uab.edu>
  *      Luis Figueroa <alefigue@uab.edu>
@@ -32,6 +32,6 @@ public class AboutFormController implements Initializable {
 
   @FXML
   private void switchToPrimary() throws IOException {
-    App.setRoot("testPrimary");
+    App.setRoot("inputpage");
   }
 }

@@ -34,5 +34,6 @@
             <Button mnemonicParsing="false" onAction="#CalculateClick" text="Calculate" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
+      <Button layoutX="176.0" layoutY="434.0" mnemonicParsing="false" onAction="#switchToAbout" text="About" />
    </children>
 </AnchorPane>
