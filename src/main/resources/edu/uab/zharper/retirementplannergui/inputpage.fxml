@@ -42,5 +42,9 @@
             <Font size="30.0" />
          </font>
       </Label>
+      <Label fx:id="initialInvalid" layoutX="201.0" layoutY="130.0" prefHeight="25.0" prefWidth="170.0" textFill="RED" />
+      <Label fx:id="monthlyInvalid" layoutX="201.0" layoutY="198.0" prefHeight="25.0" prefWidth="170.0" textFill="RED" />
+      <Label fx:id="aprInvalid" layoutX="201.0" layoutY="263.0" prefHeight="25.0" prefWidth="170.0" textFill="RED" />
+      <Label fx:id="yearsInvalid" focusTraversable="false" layoutX="201.0" layoutY="330.0" prefHeight="25.0" prefWidth="170.0" textFill="RED" />
    </children>
 </AnchorPane>

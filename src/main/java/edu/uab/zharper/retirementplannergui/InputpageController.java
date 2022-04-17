@@ -17,6 +17,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
 
 /**
  * FXML Controller class
@@ -29,6 +30,11 @@ public class InputpageController implements Initializable {
   @FXML private TextField monthlyTextField;
   @FXML private TextField aprTextField;
   @FXML private TextField yearsTextField;
+  
+  @FXML private Label initialInvalid;
+  @FXML private Label monthlyInvalid;
+  @FXML private Label aprInvalid;
+  @FXML private Label yearsInvalid;
 
   /** Initializes the controller class. */
   @Override
@@ -41,9 +47,60 @@ public class InputpageController implements Initializable {
   private void switchToAbout() throws IOException {
     App.setRoot("aboutForm");
   }
+  
+  @FXML
+  public boolean checkValue(){
+   
+      double doubleValue;
+      int intValue;
+      
+      try {
+        doubleValue = Double.parseDouble((initialTextField.getText()));
+      } catch (NumberFormatException a) {
+        initialInvalid.setText("Invalid Field");
+      }
+        
+      try {
+        doubleValue = Double.parseDouble((monthlyTextField.getText()));
+      } catch (NumberFormatException b) {
+        monthlyInvalid.setText("Invalid Field");
+      }
+        
+      try {
+        doubleValue = Double.parseDouble((aprTextField.getText()));
+      } catch (NumberFormatException c) {
+        aprInvalid.setText("Invalid Field");
+      }
+        
+      try {
+        intValue = Integer.parseInt((yearsTextField.getText()));
+      } catch (NumberFormatException d) {
+        yearsInvalid.setText("Invalid Field");
+      }
+      
+      if ((initialInvalid.getText()).equals("Invalid Field"))
+          return false;
+      if ((monthlyInvalid.getText()).equals("Invalid Field"))
+          return false;
+      if ((aprInvalid.getText()).equals("Invalid Field"))
+          return false;
+      if ((yearsInvalid.getText()).equals("Invalid Field"))
+          return false;
+      
+      return true;
+  }
+    
 
   @FXML
   public void CalculateClick() {
+      
+      initialInvalid.setText("");
+      monthlyInvalid.setText("");
+      aprInvalid.setText("");
+      yearsInvalid.setText("");
+      
+    if (checkValue() == false)
+        return;
 
     // Variables
     double balance = Double.valueOf(initialTextField.getText());
