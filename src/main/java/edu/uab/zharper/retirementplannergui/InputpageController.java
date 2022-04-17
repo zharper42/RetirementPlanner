@@ -35,6 +35,12 @@ public class InputpageController implements Initializable {
   @FXML private Label monthlyInvalid;
   @FXML private Label aprInvalid;
   @FXML private Label yearsInvalid;
+  
+  @FXML private TextField balanceTextField;
+  @FXML private TextField totalTextField;
+  @FXML private TextField dividendTextField;
+  @FXML private TextField infBalanceTextField;
+  @FXML private TextField infDividendTextField;
 
   /** Initializes the controller class. */
   @Override
@@ -110,7 +116,7 @@ public class InputpageController implements Initializable {
 
     double totalInvested, dividend, yrate, mrate;
     double infBalance, infDividend;
-    double inflation = 0.2;
+    double inflation = 0.02;
 
     // Yearly/monthly return
     yrate = percent * 0.01;
@@ -130,12 +136,12 @@ public class InputpageController implements Initializable {
     infDividend = dividend - (dividend * inflation);
     infBalance = balance - (balance * inflation);
 
-    // OUTPUT EXAMPLE
-    // balanceTextField.setText("" + balance);
-    // totalField.setText("" + totalInvested);
-    // dividendTextField.setText("" + dividend);
-    // infBalanceTextField.setText("" + infBalance);
-    // infDividendTextField.setText("" + infDividend);
+    // OUTPUT HERE
+    //balanceTextField.setText("" + balance);
+    //totalTextField.setText("" + totalInvested);
+    //dividendTextField.setText("" + dividend);
+    //infBalanceTextField.setText("" + infBalance);
+    //infDividendTextField.setText("" + infDividend);
 
   }
 
