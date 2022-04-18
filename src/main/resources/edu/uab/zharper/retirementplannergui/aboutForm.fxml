@@ -42,7 +42,7 @@
       </GridPane>
       <Label alignment="CENTER" layoutX="97.0" layoutY="92.0" prefHeight="17.0" prefWidth="205.0" text="Beautiful people of EE333 Group 2:" />
       <Label alignment="CENTER" layoutX="99.0" layoutY="279.0" prefHeight="17.0" prefWidth="205.0" text="More Info:" />
-      <Label alignment="CENTER" layoutX="80.0" layoutY="296.0" prefHeight="17.0" prefWidth="243.0" text="Dividend is 3% and is a monthly payout." />
+      <Label alignment="CENTER" layoutX="56.0" layoutY="296.0" prefHeight="17.0" prefWidth="287.0" text="Dividend is 4% on the year and is a monthly payout." />
       <Label alignment="CENTER" layoutX="99.0" layoutY="313.0" prefHeight="17.0" prefWidth="205.0" text="Inflation is 2.5% a year on average." />
       <Button layoutX="147.0" layoutY="363.0" mnemonicParsing="false" onAction="#goBackClick" prefHeight="25.0" prefWidth="107.0" text="Go Back" />
       <Label alignment="CENTER" layoutX="157.0" layoutY="26.0" text="About">

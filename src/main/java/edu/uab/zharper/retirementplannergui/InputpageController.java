@@ -29,6 +29,7 @@ import javafx.scene.media.AudioClip;
 public class InputpageController implements Initializable {
     
   private final DecimalFormat numberFormat = new DecimalFormat("#.00");
+  int num = 0;
 
   //Input text fields
   @FXML private TextField initialTextField;
@@ -62,7 +63,7 @@ public class InputpageController implements Initializable {
     App.setRoot("aboutForm");
     
     //Play audio
-    AudioClip note = new AudioClip(this.getClass().getResource("/click_sound.mp3").toString());
+    AudioClip note = new AudioClip(this.getClass().getResource("/HITMARKER.mp3").toString());
     note.play();
   }
   
@@ -76,31 +77,46 @@ public class InputpageController implements Initializable {
    
       double doubleValue;
       int intValue;
+      num = 0;
       
       //Label any invalid fields
       try {
         doubleValue = Double.parseDouble((initialTextField.getText()));
       } catch (NumberFormatException a) {
         initialInvalid.setText("Invalid Field");
+        num += 1;
       }
         
       try {
         doubleValue = Double.parseDouble((monthlyTextField.getText()));
       } catch (NumberFormatException b) {
         monthlyInvalid.setText("Invalid Field");
+        num += 1;
       }
         
       try {
         doubleValue = Double.parseDouble((aprTextField.getText()));
       } catch (NumberFormatException c) {
         aprInvalid.setText("Invalid Field");
+        num += 1;
       }
         
       try {
         intValue = Integer.parseInt((yearsTextField.getText()));
       } catch (NumberFormatException d) {
         yearsInvalid.setText("Invalid Field");
+        num += 1;
       }
+      
+      //Play audio
+    if (num == 3){
+        AudioClip note = new AudioClip(this.getClass().getResource("/triple.mp3").toString());
+        note.play();
+      }
+    else{
+        AudioClip note = new AudioClip(this.getClass().getResource("/Calculate.mp3").toString());
+        note.play();
+    }
       
       //Return false if any fields are labeled invalid
       if ((initialInvalid.getText()).equals("Invalid Field"))
@@ -123,10 +139,6 @@ public class InputpageController implements Initializable {
   @FXML
   public void CalculateClick() throws IOException {
       
-    //Play audio
-    AudioClip note = new AudioClip(this.getClass().getResource("/click_sound.mp3").toString());
-    note.play();
-      
     //Resets warning labels and checks if fields are valid
     initialInvalid.setText("");
     monthlyInvalid.setText("");
@@ -134,7 +146,7 @@ public class InputpageController implements Initializable {
     yearsInvalid.setText("");
     if (checkFields() == false)
         return;
-
+    
     //Variables
     double balance = Double.valueOf(initialTextField.getText());
     double monthly = Double.valueOf(monthlyTextField.getText());
@@ -156,8 +168,8 @@ public class InputpageController implements Initializable {
       directlyInvested += (monthly * 12);
     }
 
-    //Dividend is 3%, Inflation 2.5% per year
-    dividend = balance * 0.03;
+    //Dividend is 4%, Inflation 2.5% per year
+    dividend = (balance * 0.04) / 12;
     inflation = (inflation * years) + 1;
     infDividend = dividend / inflation;
     infBalance = balance /inflation;
