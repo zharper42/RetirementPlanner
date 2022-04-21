@@ -35,6 +35,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("inputpage"), 400, 480);
+        stage.setTitle("Retirement Planner");
         stage.setScene(scene);
         stage.show();
     }
