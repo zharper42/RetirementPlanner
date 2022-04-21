@@ -32,7 +32,7 @@ public class AboutFormController implements Initializable {
   }
 
   /** 
-   * Go Back button 
+   * Go Back button
    *
    * @throws IOException
    */
